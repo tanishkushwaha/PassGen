@@ -1,8 +1,6 @@
 import random
 import string
 
-from numpy import character
-
 def genPass(passLen, passConfig):
 
     characters = ''
