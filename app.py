@@ -1,15 +1,18 @@
 import random
 import string
 from tkinter import *
+from turtle import width
 
+from sympy import symbols
 
 def genPass(passLen, passConfig):
 
+    symbols = '!@#$%^&*()'
     characters = ''
 
     if '1' in passConfig:
         symFlag = True
-        characters += string.punctuation
+        characters += symbols
 
     if '2' in passConfig:
         numFlag = True
@@ -34,28 +37,34 @@ def genPass(passLen, passConfig):
 
     return ''.join(password)
 
-
+def generateButton():
+    flagString = str(var1.get()) + "" + str(var2.get()) + "" + str(var3.get()) + "" + str(var4.get())
+    p = genPass(int(textBox1.get()), flagString)
+    result.configure(text=p)
 
 master = Tk()
 master.title('PassGen')
 
 Label(master, text='Password Length:').grid(row=0, column=0, sticky='w')
-textBox1 = Entry(master).grid(row=0, column=2)
+textBox1 = Entry(master)
+textBox1.grid(row=0, column=1)
 
 var1 = IntVar()
-Checkbutton(master, text='Symbols', variable=var1).grid(row=1, column=0, sticky='w')
+Checkbutton(master, text='Symbols', variable=var1, onvalue=1).grid(row=1, column=0, sticky='w')
 
 var2 = IntVar()
-Checkbutton(master, text='Numbers', variable=var2).grid(row=2, column=0, sticky='w')
+Checkbutton(master, text='Numbers', variable=var2, onvalue=2).grid(row=2, column=0, sticky='w')
 
 var3 = IntVar()
-Checkbutton(master, text='Lowercase Characters', variable=var3).grid(row=3, column=0, sticky='w')
+Checkbutton(master, text='Lowercase Characters', variable=var3, onvalue=3).grid(row=3, column=0, sticky='w')
 
 var4 = IntVar()
-Checkbutton(master, text='Uppercase Characters', variable=var4).grid(row=4, column=0, sticky='w')
+Checkbutton(master, text='Uppercase Characters', variable=var4, onvalue=4).grid(row=4, column=0, sticky='w')
 
-Label(master, text='Your Password').grid(row=5, columnspan=3)
+Button(master, text='Generate', command=generateButton).grid(row=5, column=0, sticky='w')
 
+result = Label(master, text='Your Password')
+result.grid(row=5, column=1)
 
 mainloop()
 
