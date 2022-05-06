@@ -1,7 +1,6 @@
 import random
 import string
-
-from numpy import character
+from tkinter import *
 
 def genPass(passLen, passConfig):
 
