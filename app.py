@@ -4,6 +4,10 @@ from tkinter import *
 
 def genPass(passLen, passConfig):
 
+    if passLen == '':
+        result.configure(text='Invalid Length!')
+        return
+
     symbols = '!@#$%^&*()'
     characters = ''
 
@@ -27,7 +31,7 @@ def genPass(passLen, passConfig):
     random.shuffle(characters)
 
     password = []
-    for _ in range (passLen):
+    for _ in range (int(passLen)):
         password.append(random.choice(characters))
     
     random.shuffle(password)
@@ -36,7 +40,7 @@ def genPass(passLen, passConfig):
 
 def generateButton():
     flagString = str(var1.get()) + "" + str(var2.get()) + "" + str(var3.get()) + "" + str(var4.get())
-    p = genPass(int(textBox1.get()), flagString)
+    p = genPass(textBox1.get(), flagString)
     result.configure(text=p)
 
 master = Tk()
