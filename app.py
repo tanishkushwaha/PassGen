@@ -1,9 +1,6 @@
 import random
 import string
 from tkinter import *
-from turtle import width
-
-from sympy import symbols
 
 def genPass(passLen, passConfig):
 
