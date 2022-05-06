@@ -2,6 +2,7 @@ import random
 import string
 from tkinter import *
 
+
 def genPass(passLen, passConfig):
 
     characters = ''
@@ -35,11 +36,26 @@ def genPass(passLen, passConfig):
 
 
 
-passLen = int(input('Password Length: '))
-print('1. Include Symbols \n2. Include Numbers \n3. Include Lowercase Characters\
-    \n4. Include Uppercase Characters')
+master = Tk()
+master.title('PassGen')
 
-passConfig = input('Enter Flags (1-4): ')
+Label(master, text='Password Length:').grid(row=0, column=0, sticky='w')
+textBox1 = Entry(master).grid(row=0, column=2)
 
-print(f'Your Password: {genPass(passLen, passConfig)}')
+var1 = IntVar()
+Checkbutton(master, text='Symbols', variable=var1).grid(row=1, column=0, sticky='w')
+
+var2 = IntVar()
+Checkbutton(master, text='Numbers', variable=var2).grid(row=2, column=0, sticky='w')
+
+var3 = IntVar()
+Checkbutton(master, text='Lowercase Characters', variable=var3).grid(row=3, column=0, sticky='w')
+
+var4 = IntVar()
+Checkbutton(master, text='Uppercase Characters', variable=var4).grid(row=4, column=0, sticky='w')
+
+Label(master, text='Your Password').grid(row=5, columnspan=3)
+
+
+mainloop()
 
